@@ -19,6 +19,27 @@ fibArray.push(newFibNum)
 
 }
 
-return fibArray[n]
+return fibArray
 
 }
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+
+
+});
+
+
+document.getElementById('fib-num-input').addEventListener('keypress', function (e) {
+    let listBox = document.getElementById('list-box')
+    listBox.innerText = "Fibonacci Sequence:"
+    if (e.key === 'Enter') {
+        e.preventDefault()
+        let fibArray = fib(e.target.value)
+        let fibList = document.createElement('li')
+        console.log(fibArray, "entered")
+        fibList.append(fibArray)
+        listBox.append(fibList)
+    }
+});
+
