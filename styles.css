@@ -1,0 +1,9 @@
+body {
+  background-color: lightblue;
+}
+
+#flower-center {
+    position: absolute;
+  left: 200px;
+  top: 300px;
+}
