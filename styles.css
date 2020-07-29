@@ -7,3 +7,18 @@ body {
   left: 200px;
   top: 300px;
 }
+
+#flower-center-canvas {
+    position: relative;
+  left: -190;
+  top: -265;
+  height: 308;
+  width: 608;
+
+}
+
+.petal{
+height: 100;
+width: 50
+}
+
