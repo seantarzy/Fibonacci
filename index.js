@@ -24,8 +24,9 @@ return fibArray
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
+    let centerImage = document.getElementById('flower-center')
     console.log('DOM fully loaded and parsed');
-
+    console.log(centerImage)
 
 });
 
