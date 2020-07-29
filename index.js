@@ -1,17 +1,20 @@
 function fib(n){
 
+    let j = n -1
 
 let fibArray = [0,1]
-
-if(n==0){
+if(j<1){
+    return "enter a valid fibonacci length"
+}
+if(j==0){
     return 0
 }
 
-if(n==1){
+if(j==1){
     return 1
 }
 
-for(let i = 1; i < n; i++){
+for(let i = 1; i < j; i++){
 
 let newFibNum = fibArray[i] + fibArray[i-1]
 
@@ -21,6 +24,15 @@ fibArray.push(newFibNum)
 
 return fibArray
 
+}
+
+function outputFLowers(n){
+   let flowerContainer = document.getElementById('flower-container')
+    for(let i =0; i<n; i++){
+   let petal = document.createElement('img')
+        petal.src = ('/Users/seantarzy/Development/Messing/fibonacci/purple-petal.png')
+   flowerContainer.appendChild(petal)
+}
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -37,10 +49,13 @@ document.getElementById('fib-num-input').addEventListener('keypress', function (
     if (e.key === 'Enter') {
         e.preventDefault()
         let fibArray = fib(e.target.value)
+        let fibUltimate = fibArray[fibArray.length - 1]
+        outputFLowers(fibUltimate)
         let fibList = document.createElement('li')
-        console.log(fibArray, "entered")
         fibList.append(fibArray)
         listBox.append(fibList)
     }
 });
+
+
 
