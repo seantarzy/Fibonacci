@@ -27,14 +27,25 @@ return fibArray
 }
 
 function outputFLowerPetals(n){
-   let flowerContainer = document.getElementById('flower-container')
+    if(n<50){
+   let flowerCenter = document.getElementById('flower-center')
     for(let i =0; i<n; i++){
    let petal = document.createElement('img')
         petal.src = ('/Users/seantarzy/Development/Messing/fibonacci/purple-petal.png')
         petal.id = `petal ${i}`
         petal.className = 'petal'
-   flowerContainer.appendChild(petal)
+        var angle = Math.random() * Math.PI * 2;
+        x = Math.cos(angle) * 55;
+        y = Math.sin(angle) * 55;
+        petal.left = x 
+        petal.top = y
+        console.log(x, y)
+   flowerCenter.appendChild(petal)
+}}
+else{
+    return "that's too much, man!"
 }
+
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -76,8 +87,8 @@ function drawCircle() {
         ctx.lineWidth = 3;
         ctx.strokeStyle = '#FF0000';
         ctx.stroke();
-        console.log('context')
     }
+
 
 }
 

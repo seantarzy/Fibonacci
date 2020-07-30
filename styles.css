@@ -9,9 +9,9 @@ body {
 }
 
 #flower-center-canvas {
-    position: relative;
+    position: absolute;
   left: -190;
-  top: -265;
+  top: -40;
   height: 308;
   width: 608;
 
