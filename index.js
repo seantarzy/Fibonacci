@@ -27,20 +27,26 @@ return fibArray
 }
 
 function outputFLowerPetals(n){
+    let centerX = 100
+    let centerY = 60
     if(n<50){
    let flowerCenter = document.getElementById('flower-center')
-    for(let i =0; i<n; i++){
-   let petal = document.createElement('img')
+   for(let i =0; i<n; i++){
+        let petal = document.createElement('img')
         petal.src = ('/Users/seantarzy/Development/Messing/fibonacci/purple-petal.png')
         petal.id = `petal ${i}`
         petal.className = 'petal'
+        let petalDiv = document.createElement('div')
+        petalDiv.appendChild(petal)
+        flowerCenter.appendChild(petalDiv)
         var angle = Math.random() * Math.PI * 2;
-        x = Math.cos(angle) * 55;
-        y = Math.sin(angle) * 55;
-        petal.left = x 
-        petal.top = y
+        x = centerX + Math.cos(angle) * 140;
+        y = centerY + Math.sin(angle) * 140;
+       petalDiv.style.position = "absolute";
+        petalDiv.style.left = x + 'px'
+        petalDiv.style.top = y + 'px'
         console.log(x, y)
-   flowerCenter.appendChild(petal)
+        console.log(petalDiv.left, "petal position")
 }}
 else{
     return "that's too much, man!"
@@ -55,7 +61,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let centerPosition = centerImage.getBoundingClientRect();
     let x = centerPosition.left;
     let y = centerPosition.top;
-    console.log(x,y, centerPosition)
 });
 
 
@@ -71,7 +76,7 @@ document.getElementById('fib-num-input').addEventListener('keypress', function (
         fibList.append(fibArray)
         listBox.append(fibList)
     }
-    console.log(document.getElementById('flower-center-canvas').getContext('2d'))
+    console.log(document.getElementById('flower-center-canvas').getContext('2d'), "circle stuff")
 });
 
 function drawCircle() {
