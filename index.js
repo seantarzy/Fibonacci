@@ -26,27 +26,34 @@ return fibArray
 
 }
 
+
+const clearFlowerPetals = function(){
+    let center = document.getElementById('petal-holder')
+    while(center.firstChild){
+        center.removeChild(center.firstChild)
+    }
+}
 function outputFLowerPetals(n){
-    let centerX = 100
-    let centerY = 60
+    let centerX = 0
+    let centerY = 0
     if(n<50){
-   let flowerCenter = document.getElementById('flower-center')
+   let flowerCenter = document.getElementById('petal-holder')
    for(let i =0; i<n; i++){
         let petal = document.createElement('img')
         petal.src = ('/Users/seantarzy/Development/Messing/fibonacci/purple-petal.png')
         petal.id = `petal ${i}`
         petal.className = 'petal'
-        let petalDiv = document.createElement('div')
-        petalDiv.appendChild(petal)
-        flowerCenter.appendChild(petalDiv)
+        // let petalDiv = document.createElement('div')
+        // petalDiv.appendChild(petal)
+        flowerCenter.appendChild(petal)
         var angle = Math.random() * Math.PI * 2;
-        x = centerX + Math.cos(angle) * 140;
-        y = centerY + Math.sin(angle) * 140;
-       petalDiv.style.position = "absolute";
-        petalDiv.style.left = x + 'px'
-        petalDiv.style.top = y + 'px'
-        console.log(x, y)
-        console.log(petalDiv.left, "petal position")
+        x = centerX + Math.cos(angle);
+        y = centerY + Math.sin(angle);
+       petal.style.position = "relative";
+        petal.style.left = x + 'px'
+        petal.style.top = y + 'px'
+        // console.log(x, y)
+        // console.log(petalDiv.left, "petal position")
 }}
 else{
     return "that's too much, man!"
@@ -54,10 +61,12 @@ else{
 
 }
 
+
+
 window.addEventListener('DOMContentLoaded', (event) => {
     drawCircle()
     let centerImage = document.getElementById('flower-center')
-    console.log('DOM fully loaded and parsed');
+    // console.log('DOM fully loaded and parsed');
     let centerPosition = centerImage.getBoundingClientRect();
     let x = centerPosition.left;
     let y = centerPosition.top;
@@ -69,18 +78,20 @@ document.getElementById('fib-num-input').addEventListener('keypress', function (
     listBox.innerText = "Fibonacci Sequence:"
     if (e.key === 'Enter') {
         e.preventDefault()
+        clearFlowerPetals()
         let fibArray = fib(e.target.value)
         let fibUltimate = fibArray[fibArray.length - 1]
+        console.log(fibUltimate)
         outputFLowerPetals(fibUltimate)
         let fibList = document.createElement('li')
         fibList.append(fibArray)
         listBox.append(fibList)
     }
-    console.log(document.getElementById('flower-center-canvas').getContext('2d'), "circle stuff")
+    // console.log(document.getElementById('flower-center-canvas').getContext('2d'), "circle stuff")
 });
 
 function drawCircle() {
-    console.log('no context')
+    // console.log('no context')
     var canvas = document.getElementById('flower-center-canvas');
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
